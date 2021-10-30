@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
+<title>Validate me</title>
+<script>
+	function validateMe(){
+
+		return false;
+		}
+	
+</script>
+</head>
+<body>
+At least one piece of data has to come in from every input type.
+<form action="form.html" method="get" onsubmit="return validateMe();"><br>
+Name:<input type="text" id="test" name="fullname" placeholder="Enter Full Name"><br>
+Gender:<br>
+Male<input type="radio" name="gender" value="male">Female<input type="radio" name="gender" value="female"><br>
+Hobbies<br>
+Baseball <input type="checkbox" name="hobbies[]" value="baseball">  
+Football <input type="checkbox" name="hobbies[]" value="football">  
+Hockey <input type="checkbox" name="hobbies[]" value="hockey"><br>
+Favorite Show <select name="show">
+<option value="">Choose Below</option>
+<option value="ATHF">Aqua Teen Hunger Force</option>
+<option value="Family Guy">Family Guy</option>
+<option value="Simpsons">Simpsons</option>
+</select><br>
+Comments<br>
+<textarea cols="50" rows="6" name="comments"></textarea><br>
+<input type="submit" name="submit" value="enter me">
+</form>
+<script>
+</script>
+</body>
+</html>
