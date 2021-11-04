@@ -7,18 +7,47 @@
 	<script>
 		function validateMe() {
 			for (i = 0; i < document.forms[0].length; i++) {
-				console.log(document.forms[0].elements[i]);
+				console.log(document.forms[0].elements[i].value);
 
+				switch (document.forms[0].elements[i].type) {
+					case "text"
+						:
+						// code block
+						if (document.forms[0].elements[i].value == '') {
+							alert("please enter your full name.");
+							return false;
+						}
+						break;
+					case "radio":
+						// code block
+						if ((document.forms[0].elements[i].value == "male" && !document.forms[0].elements[i].checked)
+							&& (document.forms[0].elements[i + 1].value == "female" && !document.forms[0].elements[i + 1].checked)) {
 
-				if (document.forms[0].elements[i].type == "text" && document.forms[0].elements[i].value == '') {
-					alert("please enter your full name.");
+							console.log(document.forms[0].elements[i].checked);
+							console.log(i);
+							console.log(document.forms[0].elements[i + 1].checked);
+							alert("Please choose a gender.");
+							return false;
+						}
 
-					return false
+						break;
+
+					default:
+						// code block
+						console.log("default")
+						return false
 				}
 
-			}
 
+
+
+
+			}
 		}
+
+
+
+
 
 
 	</script>
@@ -35,7 +64,7 @@
 		Baseball <input type="checkbox" name="hobbies[]" value="baseball">
 		Football <input type="checkbox" name="hobbies[]" value="football">
 		Hockey <input type="checkbox" name="hobbies[]" value="hockey"><br>
-		Favorite Show <select name="show">
+		Favorite Show <select name="show" type="dropdown">
 			<option value="">Choose Below</option>
 			<option value="ATHF">Aqua Teen Hunger Force</option>
 			<option value="Family Guy">Family Guy</option>
