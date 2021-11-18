@@ -10,15 +10,16 @@
 				var formI = document.forms[0].elements[i];
 				var formIPlusOne = document.forms[0].elements[i + 1];
 				var formIPlusTwo = document.forms[0].elements[i + 2];
-				// console.log(document.forms[0].elements[i].value);
+
 				switch (formI.type) {
 					case "text":
 						// code block
 						if (formI.value == '') {
-							alert("please enter your full name.");
+							alert("Please enter your full name.");
 							return false;
 						}
 						break;
+
 					case "radio":
 						// code block
 						if ((formI.value == "male" && !formI.checked)
@@ -40,13 +41,11 @@
 								!formIPlusOne.checked)
 							&& (formIPlusTwo.value == "hockey"
 								&& !formIPlusTwo.checked)) {
-							alert("Pick at least one hobby");
+							alert("Pick at least one hobby.");
 
 							return false;
 						}
 						break;
-
-
 
 					case "select-one":
 						// code block
@@ -57,27 +56,24 @@
 							return false;
 						}
 						break;
+
 					case "textarea":
 						// code block
-
 						if (formI.value == "") {
 
-							alert("Please type any comments here.");
+							alert("Please make a comment.");
 							return false;
 						}
 						break;
+
 					default:
 						// code block
 						console.log("default");
-						console.log(formI.name);
 						return false;
 				}
 			}
-
-
-
-
 		}
+
 
 
 	</script>
