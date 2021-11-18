@@ -34,45 +34,40 @@
 					case "checkbox":
 						// 	code block 
 						let checky = formI.value
-						if ((formI.value == "baseball" && !formI.checked)
-							&& (document.forms[0].elements[i + 1].value == "football"
-								&& !document.forms[0].elements[i + 1].checked)
+						if ((!formI.checked)
+							&& (
+								!document.forms[0].elements[i + 1].checked)
 							&& (document.forms[0].elements[i + 2].value == "hockey"
 								&& !document.forms[0].elements[i + 2].checked)) {
 							alert("Pick at least one hobby");
+
 							return false;
 						}
 						break;
 
 					// 	return false
 
-
-
-
-					case "dropdown":
+					case "select-one":
 						// code block
-						if (!document.forms[0].elements[6, 7, 8].checked) {
-							alert("Pick a show.");
+
+						if (document.forms[0].elements[i].value == "") {
+
+							alert("Choose the show of your liking.");
 							return false;
 						}
-						if (formI.type == "checkbox" && !formI.checked) {
-							alert("you might of done it!");
-							console.log("ah");
-							return false
-
-							// }
-
-						}
+						break;
+					default:
+						// code block
+						console.log("default");
+						console.log(document.forms[0].elements[i].type);
+						return false;
 				}
-					// if (letsSee == false) {
-						// 	alert("gotta choose at least one.")
-						default:
-				// code block
-				console.log("default")
-				return false;
 			}
+
+
+
+
 		}
-						// }
 
 
 	</script>
@@ -89,7 +84,7 @@
 		Baseball <input type="checkbox" name="hobbies[]" value="baseball">
 		Football <input type="checkbox" name="hobbies[]" value="football">
 		Hockey <input type="checkbox" name="hobbies[]" value="hockey"><br>
-		Favorite Show <select name="show" type="dropdown">
+		Favorite Show <select name="show">
 			<option value="">Choose Below</option>
 			<option value="ATHF">Aqua Teen Hunger Force</option>
 			<option value="Family Guy">Family Guy</option>
