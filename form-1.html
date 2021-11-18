@@ -6,9 +6,10 @@
 	<title>Validate me</title>
 	<script>
 		function validateMe() {
-			var letsSee = false;
 			for (i = 0; i < document.forms[0].length; i++) {
 				var formI = document.forms[0].elements[i];
+				var formIPlusOne = document.forms[0].elements[i + 1];
+				var formIPlusTwo = document.forms[0].elements[i + 2];
 				// console.log(document.forms[0].elements[i].value);
 				switch (formI.type) {
 					case "text":
@@ -21,8 +22,8 @@
 					case "radio":
 						// code block
 						if ((formI.value == "male" && !formI.checked)
-							&& (document.forms[0].elements[i + 1].value == "female"
-								&& !document.forms[0].elements[i + 1].checked)) {
+							&& (formIPlusOne.value == "female"
+								&& !formIPlusOne.checked)) {
 
 
 
@@ -36,9 +37,9 @@
 						let checky = formI.value
 						if ((!formI.checked)
 							&& (
-								!document.forms[0].elements[i + 1].checked)
-							&& (document.forms[0].elements[i + 2].value == "hockey"
-								&& !document.forms[0].elements[i + 2].checked)) {
+								!formIPlusOne.checked)
+							&& (formIPlusTwo.value == "hockey"
+								&& !formIPlusTwo.checked)) {
 							alert("Pick at least one hobby");
 
 							return false;
@@ -50,16 +51,25 @@
 					case "select-one":
 						// code block
 
-						if (document.forms[0].elements[i].value == "") {
+						if (formI.value == "") {
 
 							alert("Choose the show of your liking.");
+							return false;
+						}
+						break;
+					case "textarea":
+						// code block
+
+						if (formI.value == "") {
+
+							alert("Please type any comments here.");
 							return false;
 						}
 						break;
 					default:
 						// code block
 						console.log("default");
-						console.log(document.forms[0].elements[i].type);
+						console.log(formI.name);
 						return false;
 				}
 			}
