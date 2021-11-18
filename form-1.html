@@ -6,23 +6,24 @@
 	<title>Validate me</title>
 	<script>
 		function validateMe() {
+			var letsSee = false;
 			for (i = 0; i < document.forms[0].length; i++) {
-				console.log(document.forms[0].elements[i].value);
-
-				switch (document.forms[0].elements[i].type) {
-					case "text"
-						:
+				var formI = document.forms[0].elements[i];
+				// console.log(document.forms[0].elements[i].value);
+				switch (formI.type) {
+					case "text":
 						// code block
-						if (document.forms[0].elements[i].value == '') {
+						if (formI.value == '') {
 							alert("please enter your full name.");
 							return false;
 						}
 						break;
 					case "radio":
 						// code block
+						if ((formI.value == "male" && !formI.checked)
+							&& (document.forms[0].elements[i + 1].value == "female"
+								&& !document.forms[0].elements[i + 1].checked)) {
 
-						if ((document.forms[0].elements[i].value == "male" && !document.forms[0].elements[i].checked)
-							&& (document.forms[0].elements[i + 1].value == "female" && !document.forms[0].elements[i + 1].checked)) {
 
 
 							alert("Please choose a gender.");
@@ -31,25 +32,49 @@
 						break;
 
 					case "checkbox":
-						// code block
-						if (!document.forms[0].elements[1, 2, 3].checked) {
-							alert("Pick at least one hobby please.");
+						// 	code block 
+						let checky = formI.value
+						if ((formI.value == "baseball" && !formI.checked)
+							&& (document.forms[0].elements[i + 1].value == "football"
+								&& !document.forms[0].elements[i + 1].checked)
+							&& (document.forms[0].elements[i + 2].value == "hockey"
+								&& !document.forms[0].elements[i + 2].checked)) {
+							alert("Pick at least one hobby");
 							return false;
 						}
 						break;
 
-					default:
+					// 	return false
+
+
+
+
+					case "dropdown":
 						// code block
-						console.log("default")
-						return false
+						if (!document.forms[0].elements[6, 7, 8].checked) {
+							alert("Pick a show.");
+							return false;
+						}
+						if (formI.type == "checkbox" && !formI.checked) {
+							alert("you might of done it!");
+							console.log("ah");
+							return false
+
+							// }
+
+						}
 				}
-
-
-
-
-
+					// if (letsSee == false) {
+						// 	alert("gotta choose at least one.")
+						default:
+				// code block
+				console.log("default")
+				return false;
 			}
 		}
+						// }
+
+
 	</script>
 </head>
 
