@@ -1,107 +1,99 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
 
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=windows-1252">
 	<title>Validate me</title>
-	<script>
-		function validateMe() {
-			for (i = 0; i < document.forms[0].length; i++) {
-				var formI = document.forms[0].elements[i];
-				var formIPlusOne = document.forms[0].elements[i + 1];
-				var formIPlusTwo = document.forms[0].elements[i + 2];
-
-				switch (formI.type) {
-					case "text":
-						// code block
-						if (formI.value == '') {
-							alert("Please enter your full name.");
-							return false;
-						}
-						break;
-
-					case "radio":
-						// code block
-						if ((formI.value == "male" && !formI.checked)
-							&& (formIPlusOne.value == "female"
-								&& !formIPlusOne.checked)) {
-
-
-
-							alert("Please choose a gender.");
-							return false;
-						}
-						break;
-
-					case "checkbox":
-						// 	code block 
-						let checky = formI.value
-						if ((!formI.checked)
-							&& (
-								!formIPlusOne.checked)
-							&& (formIPlusTwo.value == "hockey"
-								&& !formIPlusTwo.checked)) {
-							alert("Pick at least one hobby.");
-
-							return false;
-						}
-						break;
-
-					case "select-one":
-						// code block
-
-						if (formI.value == "") {
-
-							alert("Choose the show of your liking.");
-							return false;
-						}
-						break;
-
-					case "textarea":
-						// code block
-						if (formI.value == "") {
-
-							alert("Please make a comment.");
-							return false;
-						}
-						break;
-
-					default:
-						// code block
-						console.log("default");
-						return false;
-				}
-			}
-		}
-
-
-
-	</script>
 </head>
 
 <body>
 	At least one piece of data has to come in from every input type.
-	<form action="form.html" method="get" onsubmit="return validateMe();"><br>
-		Name:<input type="text" id="test" name="fullname" placeholder="Enter Full Name"><br>
-		Gender:<br>
-		Male<input type="radio" name="gender" value="male">
-		Female<input type="radio" name="gender" value="female"><br>
-		Hobbies<br>
-		Baseball <input type="checkbox" name="hobbies[]" value="baseball">
-		Football <input type="checkbox" name="hobbies[]" value="football">
-		Hockey <input type="checkbox" name="hobbies[]" value="hockey"><br>
-		Favorite Show <select name="show">
-			<option value="">Choose Below</option>
-			<option value="ATHF">Aqua Teen Hunger Force</option>
-			<option value="Family Guy">Family Guy</option>
-			<option value="Simpsons">Simpsons</option>
-		</select><br>
-		Comments<br>
-		<textarea cols="50" rows="6" name="comments"></textarea><br>
-		<input type="submit" name="submit" value="enter me">
+	<form action="hw5.html" method="get" onsubmit="return validateMe();"><br>
+
+		<div>
+			Name:
+			<input type="text" id="name" name="fullname" placeholder="Enter Full Name"><br>
+			<span id="fullname_error"></span><br>
+		</div>
+
+		<div>
+			Gender:<br>
+			Male
+			<input type="radio" name="gender" value="male">
+			Female
+			<input type="radio" name="gender" value="female"><br>
+			<span id="gender_error"></span><br>
+		</div>
+
+		<div>
+			Hobbies<br>
+			Baseball <input type="checkbox" title="hobby" name="hobbies[]" value="baseball">
+			Football <input type="checkbox" title="hobby" name="hobbies[]" value="football">
+			Hockey <input type="checkbox" title="hobby" name="hobbies[]" value="hockey"><br>
+			<span id="hobbies[]_error"></span><br>
+		</div>
+
+		<div>
+			Favorite Show <br><select id="show" name="show">
+				<option value="">Choose Below</option>
+				<option value="ATHF">Aqua Teen Hunger Force</option>
+				<option value="Family Guy">Family Guy</option>
+				<option value="Simpsons">Simpsons</option>
+			</select><br>
+			<span id="show_error"></span><br>
+		</div>
+
+		<div>
+			Comments<br>
+			<textarea rows="6" cols="50" name="comments" id="comments" placeholder="Enter comments" tabindex="4"
+				value=''></textarea>
+			<span id="comments_error"></span>
+		</div>
+
+		<input type="submit" name="submit" value="Enter">
 	</form>
+
+
+
 	<script>
+
+		function validateMe() {
+
+			for (var i = 0; i < document.forms[0].elements.length; i++) {
+				// 	var errorarea = document.forms[0].elements[i].name + "_error";
+				// 	if (document.forms[0].elements[i].type == 'text')
+				// 		if (document.forms[0].elements[i].value == '') {
+				// 			var msg = document.forms[0].elements[i].name;
+				// 			document.getElementById(errorarea).innerHTML = 'Please enter your ' + msg;
+				// 			document.getElementById(errorarea).style.color = '#ff0000';
+				// 			document.forms[0].elements[i].focus();
+				// 		}
+				// 		else {
+				// 			document.getElementById(errorarea).innerHTML = '';
+
+
+
+
+				if (document.forms[0].elements[i].type != 'submit') {
+					var errorarea = document.forms[0].elements[i].name + "_error";
+					if (document.forms[0].elements[i].type == 'text')
+						if (document.forms[0].elements[i].value == '') {
+							var msg = document.forms[0].elements[i].name;
+							var t = document.createTextNode("Please enter your " + msg);
+							document.forms[0].elements[i].nextElementSibling.nextElementSibling.appendChild(t);
+							document.forms[0].elements[i].nextElementSibling.nextElementSibling.style.color = '#ff0000';
+							document.forms[0].elements[i].focus();
+						}
+						else {
+							document.getElementById(errorarea).innerHTML = '';
+						}
+
+
+
+					return false;
+				}
+			}
+		}
 	</script>
+
 </body>
 
 </html>
